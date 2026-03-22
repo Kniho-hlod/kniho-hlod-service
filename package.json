@@ -4,7 +4,9 @@
   "description": "Model configs and DTO types for kniho-hlod project",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
@@ -21,6 +23,7 @@
   "license": "ISC",
   "devDependencies": {
     "@eleansphere/be-core": "^1.0.0",
+    "@eleansphere/service-core": "^1.0.1",
     "typescript": "^5.4.5"
   }
 }
