@@ -1,6 +1,6 @@
 {
   "name": "@eleansphere/kniho-hlod-service",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Model configs and DTO types for kniho-hlod project",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,9 +22,11 @@
   "keywords": [],
   "author": "Eleansphere",
   "license": "ISC",
+  "dependencies": {
+    "@eleansphere/service-core": "^1.1.0"
+  },
   "devDependencies": {
     "@eleansphere/be-core": "^1.1.0",
-    "@eleansphere/service-core": "^1.1.0",
     "typescript": "^5.4.5"
   }
 }
