@@ -1,4 +1,4 @@
-import type { ModelConfig } from 'be-core';
+import type { ModelConfig } from '@eleansphere/be-core';
 
 export const loanConfig = {
   name: 'loan',
