@@ -7,6 +7,7 @@ export { bookEntity } from './entities/book.entity';
 export { loanEntity } from './entities/loan.entity';
 export { userEntity } from './entities/user.entity';
 export { profileImageEntity } from './entities/profile-image.entity';
+export { systemNotificationEntity } from './entities/system-notification.entity';
 
 // ── Shared: Auth DTOs ─────────────────────────────────────────────────────────
 export { LoginRequest, LoginResponse } from './dtos/auth.dto';
@@ -51,3 +52,12 @@ export const ProfileImageDto = profileImageEntity.Dto;
 export type ProfileImageDto = InstanceType<typeof profileImageEntity.Dto>;
 export const CreateProfileImageDto = profileImageEntity.CreateDto;
 export type CreateProfileImageDto = InstanceType<typeof profileImageEntity.CreateDto>;
+
+import { systemNotificationEntity } from './entities/system-notification.entity';
+
+export const SystemNotificationDto = systemNotificationEntity.Dto;
+export type SystemNotificationDto = InstanceType<typeof systemNotificationEntity.Dto>;
+export const CreateSystemNotificationDto = systemNotificationEntity.CreateDto;
+export type CreateSystemNotificationDto = InstanceType<typeof systemNotificationEntity.CreateDto>;
+export const UpdateSystemNotificationDto = systemNotificationEntity.UpdateDto;
+export type UpdateSystemNotificationDto = InstanceType<typeof systemNotificationEntity.UpdateDto>;

@@ -4,6 +4,7 @@ import { bookEntity } from './entities/book.entity';
 import { loanEntity } from './entities/loan.entity';
 import { userEntity } from './entities/user.entity';
 import { profileImageEntity } from './entities/profile-image.entity';
+import { systemNotificationEntity } from './entities/system-notification.entity';
 
 export class KnihoHlodServices extends AbstractServiceContainer {
   readonly auth: AuthService;
@@ -11,6 +12,7 @@ export class KnihoHlodServices extends AbstractServiceContainer {
   readonly books: InstanceType<typeof bookEntity.Service>;
   readonly loans: InstanceType<typeof loanEntity.Service>;
   readonly files: InstanceType<typeof profileImageEntity.Service>;
+  readonly systemNotifications: InstanceType<typeof systemNotificationEntity.Service>;
 
   constructor(baseUrl: string, tokenProvider: () => string | null) {
     super(baseUrl, tokenProvider);
@@ -19,6 +21,7 @@ export class KnihoHlodServices extends AbstractServiceContainer {
     this.books = new bookEntity.Service(...this.args());
     this.loans = new loanEntity.Service(...this.args());
     this.files = new profileImageEntity.Service(...this.args());
+    this.systemNotifications = new systemNotificationEntity.Service(...this.args());
   }
 }
 
