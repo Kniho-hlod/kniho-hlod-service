@@ -16,3 +16,12 @@ export class LoginResponse {
     Object.assign(this, data);
   }
 }
+
+export class ChangePasswordRequest {
+  currentPassword!: string;
+  newPassword!: string;
+
+  constructor(data: Partial<ChangePasswordRequest> = {}) {
+    Object.assign(this, data);
+  }
+}
