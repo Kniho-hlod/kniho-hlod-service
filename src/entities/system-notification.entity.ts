@@ -1,5 +1,5 @@
-import { defineEntity } from '../entity-factory';
-import type { InferDto } from '../entity-factory';
+import { defineEntity } from '@eleansphere/entity-core';
+import type { InferDto } from '@eleansphere/entity-core';
 
 const fields = {
   title: { type: 'STRING' as const, required: true as const, maxLength: 200 },

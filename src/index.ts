@@ -1,6 +1,6 @@
 // ── Entity factory ────────────────────────────────────────────────────────────
-export { defineEntity } from './entity-factory';
-export type { FieldDef, Fields, InferDto, InferCreateDto, InferUpdateDto, DtoClass } from './entity-factory';
+export { defineEntity } from '@eleansphere/entity-core';
+export type { FieldDef, Fields, InferDto, InferCreateDto, InferUpdateDto, DtoClass } from '@eleansphere/entity-core';
 
 // ── BE: Model configs (via entity objects) ────────────────────────────────────
 export { bookEntity } from './entities/book.entity';
@@ -14,7 +14,7 @@ export { LoginRequest, LoginResponse, ChangePasswordRequest, RegisterRequest } f
 
 // ── FE: Auth service ──────────────────────────────────────────────────────────
 export { AuthService } from './services/auth.service';
-export { AbstractUserScopedCrudService } from './services/abstract-user-scoped-crud.service';
+export { AbstractUserScopedCrudService } from '@eleansphere/entity-core';
 
 // ── FE: Service container ─────────────────────────────────────────────────────
 export { KnihoHlodServices, configureServices, getServices } from './service-container';

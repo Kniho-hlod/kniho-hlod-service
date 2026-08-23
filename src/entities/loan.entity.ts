@@ -1,4 +1,4 @@
-import { defineEntity, type InferDto } from '../entity-factory';
+import { defineEntity, type InferDto } from '@eleansphere/entity-core';
 
 const loanFields = {
   borrower: { type: 'STRING' as const, required: true as const },

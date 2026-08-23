@@ -17,17 +17,18 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "core-update": "npm install @eleansphere/be-core@latest",
-    "service-update": "npm install @eleansphere/service-core@latest"
+    "core-update": "npm install @eleansphere/entity-core@latest @eleansphere/service-core@latest",
+    "release": "npm run build && changeset publish"
   },
   "keywords": [],
   "author": "Eleansphere",
   "license": "ISC",
   "dependencies": {
+    "@eleansphere/entity-core": "^1.0.0",
     "@eleansphere/service-core": "^1.5.0"
   },
   "devDependencies": {
-    "@eleansphere/be-core": "^1.6.0",
+    "@changesets/cli": "^3.0.1",
     "typescript": "^5.4.5"
   }
 }

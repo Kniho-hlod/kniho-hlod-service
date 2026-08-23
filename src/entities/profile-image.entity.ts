@@ -1,4 +1,4 @@
-import { defineEntity } from '../entity-factory';
+import { defineEntity } from '@eleansphere/entity-core';
 
 export const profileImageEntity = defineEntity({
   name: 'profileImage',
