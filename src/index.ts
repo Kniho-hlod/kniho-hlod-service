@@ -1,13 +1,5 @@
-// ── Entity factory ────────────────────────────────────────────────────────────
-export { defineEntity } from '@eleansphere/entity-core';
-export type {
-  FieldDef,
-  Fields,
-  InferDto,
-  InferCreateDto,
-  InferUpdateDto,
-  DtoClass,
-} from '@eleansphere/entity-core';
+// This package composes entities and the service container; it is not the entity toolkit.
+// Import `defineEntity`, `InferDto`, etc. from `@eleansphere/entity-core` directly.
 
 // ── Entities (model configs + services derive from these) ─────────────────────
 export {
@@ -29,7 +21,6 @@ export {
 
 // ── FE: Auth service ──────────────────────────────────────────────────────────
 export { AuthService } from './services/auth.service';
-export { AbstractUserScopedCrudService } from '@eleansphere/entity-core';
 
 // ── FE: Service container ─────────────────────────────────────────────────────
 export { configureServices, getServices } from './service-container';
