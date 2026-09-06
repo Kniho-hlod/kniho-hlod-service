@@ -1,29 +1,25 @@
-import { AbstractServiceContainer } from '@eleansphere/service-core';
+import { createServiceContainer, type ServiceContainer } from '@eleansphere/entity-core';
 import { AuthService } from './services/auth.service';
-import { bookEntity } from './entities/book.entity';
-import { loanEntity } from './entities/loan.entity';
-import { userEntity } from './entities/user.entity';
-import { profileImageEntity } from './entities/profile-image.entity';
-import { systemNotificationEntity } from './entities/system-notification.entity';
+import {
+  bookEntity,
+  loanEntity,
+  userEntity,
+  profileImageEntity,
+  systemNotificationEntity,
+} from './entities';
 
-export class KnihoHlodServices extends AbstractServiceContainer {
-  readonly auth: AuthService;
-  readonly users: InstanceType<typeof userEntity.Service>;
-  readonly books: InstanceType<typeof bookEntity.Service>;
-  readonly loans: InstanceType<typeof loanEntity.Service>;
-  readonly files: InstanceType<typeof profileImageEntity.Service>;
-  readonly systemNotifications: InstanceType<typeof systemNotificationEntity.Service>;
+// Keys are the public accessor names — `getServices().books`, `.auth`, … — kept identical to the
+// old hand-written `KnihoHlodServices` class so nothing in the frontend changes.
+const registry = {
+  auth: AuthService,
+  users: userEntity,
+  books: bookEntity,
+  loans: loanEntity,
+  files: profileImageEntity,
+  systemNotifications: systemNotificationEntity,
+} as const;
 
-  constructor(baseUrl: string, tokenProvider: () => string | null) {
-    super(baseUrl, tokenProvider);
-    this.auth = new AuthService(...this.args());
-    this.users = new userEntity.Service(...this.args());
-    this.books = new bookEntity.Service(...this.args());
-    this.loans = new loanEntity.Service(...this.args());
-    this.files = new profileImageEntity.Service(...this.args());
-    this.systemNotifications = new systemNotificationEntity.Service(...this.args());
-  }
-}
+export type KnihoHlodServices = ServiceContainer<typeof registry>;
 
 let _instance: KnihoHlodServices | null = null;
 
@@ -31,7 +27,7 @@ export function configureServices(
   baseUrl: string,
   tokenProvider: () => string | null
 ): KnihoHlodServices {
-  _instance = new KnihoHlodServices(baseUrl, tokenProvider);
+  _instance = createServiceContainer(registry, baseUrl, tokenProvider);
   return _instance;
 }
 

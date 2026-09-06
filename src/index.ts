@@ -1,31 +1,50 @@
 // ── Entity factory ────────────────────────────────────────────────────────────
 export { defineEntity } from '@eleansphere/entity-core';
-export type { FieldDef, Fields, InferDto, InferCreateDto, InferUpdateDto, DtoClass } from '@eleansphere/entity-core';
+export type {
+  FieldDef,
+  Fields,
+  InferDto,
+  InferCreateDto,
+  InferUpdateDto,
+  DtoClass,
+} from '@eleansphere/entity-core';
 
-// ── BE: Model configs (via entity objects) ────────────────────────────────────
-export { bookEntity } from './entities/book.entity';
-export { loanEntity } from './entities/loan.entity';
-export { userEntity } from './entities/user.entity';
-export { profileImageEntity } from './entities/profile-image.entity';
-export { systemNotificationEntity } from './entities/system-notification.entity';
+// ── Entities (model configs + services derive from these) ─────────────────────
+export {
+  bookEntity,
+  loanEntity,
+  userEntity,
+  profileImageEntity,
+  systemNotificationEntity,
+  allEntities,
+} from './entities';
 
 // ── Shared: Auth DTOs ─────────────────────────────────────────────────────────
-export { LoginRequest, LoginResponse, ChangePasswordRequest, RegisterRequest } from './dtos/auth.dto';
+export {
+  LoginRequest,
+  LoginResponse,
+  ChangePasswordRequest,
+  RegisterRequest,
+} from './dtos/auth.dto';
 
 // ── FE: Auth service ──────────────────────────────────────────────────────────
 export { AuthService } from './services/auth.service';
 export { AbstractUserScopedCrudService } from '@eleansphere/entity-core';
 
 // ── FE: Service container ─────────────────────────────────────────────────────
-export { KnihoHlodServices, configureServices, getServices } from './service-container';
+export { configureServices, getServices } from './service-container';
+export type { KnihoHlodServices } from './service-container';
 
 // ── Backwards-compatible DTO exports ─────────────────────────────────────────
 // Value exports allow `new BookDto()` in components.
 // Type exports allow `BookDto` as a type annotation.
-import { bookEntity } from './entities/book.entity';
-import { loanEntity } from './entities/loan.entity';
-import { userEntity } from './entities/user.entity';
-import { profileImageEntity } from './entities/profile-image.entity';
+import {
+  bookEntity,
+  loanEntity,
+  userEntity,
+  profileImageEntity,
+  systemNotificationEntity,
+} from './entities';
 
 export const BookDto = bookEntity.Dto;
 export type BookDto = InstanceType<typeof bookEntity.Dto>;
@@ -52,8 +71,6 @@ export const ProfileImageDto = profileImageEntity.Dto;
 export type ProfileImageDto = InstanceType<typeof profileImageEntity.Dto>;
 export const CreateProfileImageDto = profileImageEntity.CreateDto;
 export type CreateProfileImageDto = InstanceType<typeof profileImageEntity.CreateDto>;
-
-import { systemNotificationEntity } from './entities/system-notification.entity';
 
 export const SystemNotificationDto = systemNotificationEntity.Dto;
 export type SystemNotificationDto = InstanceType<typeof systemNotificationEntity.Dto>;

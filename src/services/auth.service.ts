@@ -1,20 +1,17 @@
-import { AbstractAuthService } from '@eleansphere/service-core';
-import { ChangePasswordRequest, LoginRequest, LoginResponse, RegisterRequest } from '../dtos/auth.dto';
+import { AuthService as BaseAuthService, type AuthUser } from '@eleansphere/service-core';
+import { ChangePasswordRequest, LoginResponse, RegisterRequest } from '../dtos/auth.dto';
 
-export class AuthService extends AbstractAuthService<LoginRequest, LoginResponse, { id: string; email: string }> {
-  login(credentials: LoginRequest): Promise<LoginResponse> {
-    return this.post<LoginResponse>('/api/auth/login', credentials);
-  }
-
-  me(): Promise<{ id: string; email: string }> {
-    return this.get('/api/auth/me');
-  }
-
+/**
+ * `login` / `me` / `forgotPassword` / `resetPassword` come from `@eleansphere/service-core`'s
+ * `AuthService` (they match be-core's `createAuthRouter` and were identical to the hand-written
+ * versions this class used to carry). Only the kniho-hlod-specific routes are declared here.
+ */
+export class AuthService extends BaseAuthService<AuthUser, LoginResponse> {
   register(dto: RegisterRequest): Promise<void> {
-    return this.post('/api/auth/register', dto);
+    return this.post<void>('/api/auth/register', dto);
   }
 
   changePassword(dto: ChangePasswordRequest): Promise<void> {
-    return this.post('/api/auth/change-password', dto);
+    return this.post<void>('/api/auth/change-password', dto);
   }
 }
