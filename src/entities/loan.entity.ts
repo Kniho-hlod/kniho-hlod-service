@@ -15,12 +15,10 @@ export const loanEntity = defineEntity({
   basePath: '/api/loans',
   userScoped: true,
   fields: loanFields,
-  extend: (base) =>
-    class extends (base as any) {
+  extend: (Base) =>
+    class extends Base {
       getByBook(bookId: string): Promise<InferDto<typeof loanFields>[]> {
-        return (this as any).get(`/api/loans?bookId=${bookId}`) as Promise<
-          InferDto<typeof loanFields>[]
-        >;
+        return this.get<InferDto<typeof loanFields>[]>(`${this.basePath}?bookId=${bookId}`);
       }
     },
 });

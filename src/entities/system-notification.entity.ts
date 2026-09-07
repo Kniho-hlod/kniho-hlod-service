@@ -16,11 +16,9 @@ export const systemNotificationEntity = defineEntity({
   userScoped: false,
   fields,
   extend(Base) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return class extends (Base as any) {
-      async getActive(): Promise<InferDto<typeof fields>[]> {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        return (this as any).get('/api/system-notifications/active') as Promise<InferDto<typeof fields>[]>;
+    return class extends Base {
+      getActive(): Promise<InferDto<typeof fields>[]> {
+        return this.get<InferDto<typeof fields>[]>(`${this.basePath}/active`);
       }
     };
   },
